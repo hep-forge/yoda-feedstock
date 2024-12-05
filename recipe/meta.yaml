@@ -40,6 +40,7 @@ requirements:
     - zlib
   run:
     - python
+    - root
     - numpy
     - matplotlib
 
