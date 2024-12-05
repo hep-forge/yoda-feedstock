@@ -54,6 +54,7 @@ test:
     - yoda2aida --help
     - yoda2flat --help
     - yodacmp --help
+    - yodahist --help
 {% endif %}
     - root2yoda --help
     - yoda2yoda --help
@@ -64,7 +65,6 @@ test:
     - yodaplot --help
     - yodastack --help
     - yoda2root --help
-    - yodahist --help
     - yodamerge --help
     - yodascale --help
 
