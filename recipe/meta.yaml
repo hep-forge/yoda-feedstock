@@ -56,8 +56,8 @@ test:
     - yoda2flat --help
     - yodacmp --help
     - yodahist --help
-{% endif %}
     - root2yoda --help
+{% endif %}
     - yoda2yoda --help
     - yodacnv --help
     - yoda-config --help
