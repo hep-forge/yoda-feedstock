@@ -1,30 +1,42 @@
-About lhapdf-feedstock
-======================
+About yoda-feedstock
+====================
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/lhapdf-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/yoda-feedstock/blob/main/LICENSE.txt)
 
-Home: https://lhapdf.hepforge.org
+Home: https://yoda.hepforge.org/
 
-Package license: GPL-3.0
+Package license: GPL-3.0-only
 
-Summary: LHAPDF is the standard tool for evaluating parton distribution functions (PDFs) in high-energy physics.
+Summary: Yet more Objects for Data Analysis
 
-LHAPDF is the standard tool for evaluating parton distribution functions (PDFs) in high-energy physics. PDFs encode the flavour and momentum structure of composite particles, such as protons, pions and nuclei; most cross-section calculations are based on parton-level matrix-elements which must be connected to the real interacting particles, hence PDFs are an essential ingredient of phenomenological and experimental studies at hadron and heavy-ion colliders (e.g. LHC, HERA, Tevatron, EIC, FCC) and in cosmic-ray physics.
+Documentation: https://gitlab.com/hepcedar/yoda/
+
+YODA is a small set of data analysis (specifically histogramming) classes
+being developed by MCnet members as a lightweight common system for MC
+event generator validation analyses, particularly as the core histogramming
+system in Rivet.
 
 
 Current build status
 ====================
 
 
-<table>
+<table><tr>
+    <td>Travis</td>
+    <td>
+      <a href="https://app.travis-ci.com/conda-forge/yoda-feedstock">
+        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/yoda-feedstock/main.svg?label=Linux">
+      </a>
+    </td>
+  </tr>
     
   <tr>
     <td>Azure</td>
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main">
+          <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+            <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -32,169 +44,113 @@ Current build status
           <tbody><tr>
               <td>linux_64_python3.10</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.10" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.10" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_python3.11</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.11" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.11" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_python3.12</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.12" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.12" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_64_python3.9</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.9" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.9" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_python3.10</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.10" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.10" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_python3.11</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.11" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.11" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_python3.12</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.12" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.12" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>linux_aarch64_python3.9</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.9" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_python3.10</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_python3.10" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_python3.11</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_python3.11" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_python3.12</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_python3.12" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_ppc64le_python3.9</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_python3.9" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_aarch64_python3.9" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_python3.10</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.10" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.10" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_python3.11</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_python3.12</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_python3.9</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.9" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.9" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.10</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.10" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.10" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.11</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.11" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.11" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.12</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_arm64_python3.9</td>
               <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.9" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.10</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.10" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.11</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.11" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.12</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.12" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.9</td>
-              <td>
-                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15974&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lhapdf-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.9" alt="variant">
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=12698&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/yoda-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.9" alt="variant">
                 </a>
               </td>
             </tr>
@@ -210,53 +166,53 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-lhapdf-green.svg)](https://anaconda.org/conda-forge/lhapdf) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lhapdf.svg)](https://anaconda.org/conda-forge/lhapdf) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lhapdf.svg)](https://anaconda.org/conda-forge/lhapdf) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lhapdf.svg)](https://anaconda.org/conda-forge/lhapdf) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-yoda-green.svg)](https://anaconda.org/conda-forge/yoda) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/yoda.svg)](https://anaconda.org/conda-forge/yoda) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/yoda.svg)](https://anaconda.org/conda-forge/yoda) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/yoda.svg)](https://anaconda.org/conda-forge/yoda) |
 
-Installing lhapdf
-=================
+Installing yoda
+===============
 
-Installing `lhapdf` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `yoda` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `lhapdf` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `yoda` can be installed with `conda`:
 
 ```
-conda install lhapdf
-```
-
-or with `mamba`:
-
-```
-mamba install lhapdf
-```
-
-It is possible to list all of the versions of `lhapdf` available on your platform with `conda`:
-
-```
-conda search lhapdf --channel conda-forge
+conda install yoda
 ```
 
 or with `mamba`:
 
 ```
-mamba search lhapdf --channel conda-forge
+mamba install yoda
+```
+
+It is possible to list all of the versions of `yoda` available on your platform with `conda`:
+
+```
+conda search yoda --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search yoda --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search lhapdf --channel conda-forge
+mamba repoquery search yoda --channel conda-forge
 
-# List packages depending on `lhapdf`:
-mamba repoquery whoneeds lhapdf --channel conda-forge
+# List packages depending on `yoda`:
+mamba repoquery whoneeds yoda --channel conda-forge
 
-# List dependencies of `lhapdf`:
-mamba repoquery depends lhapdf --channel conda-forge
+# List dependencies of `yoda`:
+mamba repoquery depends yoda --channel conda-forge
 ```
 
 
@@ -301,17 +257,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating lhapdf-feedstock
-=========================
+Updating yoda-feedstock
+=======================
 
-If you would like to improve the lhapdf recipe or build a new
+If you would like to improve the yoda recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/lhapdf-feedstock are
+Note that all branches in the conda-forge/yoda-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.

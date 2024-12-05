@@ -1,46 +1,71 @@
-{% set versions = {
-    "2.0.2": "caa1301372ab8d911c8a9e5b2f9dfa31b12fddd39cfb56237499e5705020bede"
-} %}
-
-
-{% set version = environ.get('COMMIT_VERSION', None) %}
-{% set version = version or versions.keys()|first %}
-{% set version = version|string %}
+{% set name = "yoda" %}
+{% set version = "1.9.6" %}
 
 package:
-  name: {{ environ.get('ANACONDA_PACKAGE', "yoda")|string|lower }}
-  version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://yoda.hepforge.org/downloads/?f=YODA-{{ version }}.tar.gz"
-  {% if versions.get(version, None) %}
-  sha256: {{ versions.get(version) }}
-  {% endif %}
+  url: https://yoda.hepforge.org/downloads?f=YODA-{{ version }}.tar.gz
+  sha256: 5c57914eb8d8068844560e3a3e545f68d89ca49796dcc0932cdd42ee62064955
+
+build:
+  number: 7
+  skip: true  # [win or ppc64le]
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
-
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - gnuconfig  # [unix]
+    - pkg-config
+    - make
     - autoconf
-
   host:
     - python
-    - cython>=0.24
-    - zlib
     - root
-
+    - cython >=0.24
+    - zlib
   run:
     - python
-    - zlib
-    - root
+
+test:
+  imports:
+    - yoda
+  commands:
+    - aida2flat --help
+    - flat2yoda --help
+    - root2yoda --help
+    - yoda2flat --help
+    - yoda2yoda --help
+    - yodacnv --help
+    - yoda-config --help
+    - yodadiff --help
+    - yodals --help
+    - yodaplot --help
+    - yodastack --help
+    - aida2yoda --help
+    - yoda2aida --help
+    - yoda2root --help
+    - yodacmp --help
+    - yodahist --help
+    - yodamerge --help
+    - yodascale --help
 
 about:
-  home: "https://yoda.hepforge.org"
-  license: "GPL-3.0"
-  summary: "YODA — Yet more Objects for Data Analysis"
+  home: https://yoda.hepforge.org/
+  doc_url: https://gitlab.com/hepcedar/yoda/
+  license: GPL-3.0-only
+  license_file: COPYING
+  summary: Yet more Objects for Data Analysis
+
   description: |
-    YODA is a small set of data analysis (specifically histogramming) classes being developed by MCnet members as a lightweight common system for MC event generator validation analyses, particularly as the core histogramming system in Rivet.
+    YODA is a small set of data analysis (specifically histogramming) classes
+    being developed by MCnet members as a lightweight common system for MC
+    event generator validation analyses, particularly as the core histogramming
+    system in Rivet.
 
 extra:
   recipe-maintainers:
