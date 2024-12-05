@@ -1,0 +1,47 @@
+{% set versions = {
+    "2.0.2": "caa1301372ab8d911c8a9e5b2f9dfa31b12fddd39cfb56237499e5705020bede"
+} %}
+
+
+{% set version = environ.get('COMMIT_VERSION', None) %}
+{% set version = version or versions.keys()|first %}
+{% set version = version|string %}
+
+package:
+  name: {{ environ.get('ANACONDA_PACKAGE', "yoda")|string|lower }}
+  version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
+
+source:
+  url: "https://yoda.hepforge.org/downloads/?f=YODA-{{ version }}.tar.gz"
+  {% if versions.get(version, None) %}
+  sha256: {{ versions.get(version) }}
+  {% endif %}
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+
+    - autoconf
+
+  host:
+    - python
+    - cython>=0.24
+    - zlib
+    - root
+
+  run:
+    - python
+    - zlib
+    - root
+
+about:
+  home: "https://yoda.hepforge.org"
+  license: "GPL-3.0"
+  summary: "YODA — Yet more Objects for Data Analysis"
+  description: |
+    YODA is a small set of data analysis (specifically histogramming) classes being developed by MCnet members as a lightweight common system for MC event generator validation analyses, particularly as the core histogramming system in Rivet.
+
+extra:
+  recipe-maintainers:
+    - meiyasan
