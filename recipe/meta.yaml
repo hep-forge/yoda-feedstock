@@ -43,8 +43,12 @@ test:
   imports:
     - yoda
   commands:
-    - aida2flat --help # [{{ version < '2' }}]
-    - flat2yoda --help # [{{ version < '2' }}]
+{% if version < "2" %}
+    - aida2flat --help
+    - flat2yoda --help
+    - aida2yoda --help
+    - yoda2aida --help
+{% endif %}
     - root2yoda --help
     - yoda2flat --help
     - yoda2yoda --help
@@ -54,8 +58,6 @@ test:
     - yodals --help
     - yodaplot --help
     - yodastack --help
-    - aida2yoda --help # [{{ version < '2' }}]
-    - yoda2aida --help # [{{ version < '2' }}]
     - yoda2root --help
     - yodacmp --help
     - yodahist --help
