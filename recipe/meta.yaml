@@ -48,9 +48,9 @@ test:
     - flat2yoda --help
     - aida2yoda --help
     - yoda2aida --help
+    - yoda2flat --help
 {% endif %}
     - root2yoda --help
-    - yoda2flat --help
     - yoda2yoda --help
     - yodacnv --help
     - yoda-config --help
