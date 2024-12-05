@@ -40,6 +40,8 @@ requirements:
     - zlib
   run:
     - python
+    - numpy
+    - matplotlib
 
 test:
   imports:
