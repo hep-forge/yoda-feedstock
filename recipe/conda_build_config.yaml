@@ -6,3 +6,4 @@ python:
   
 packages:
   - numpy
+  - matplotlib
