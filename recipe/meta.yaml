@@ -1,13 +1,21 @@
-{% set name = "yoda" %}
-{% set version = "1.9.6" %}
+{% set versions = {
+    "2.0.2": "caa1301372ab8d911c8a9e5b2f9dfa31b12fddd39cfb56237499e5705020bede",
+    "1.9.6": "5c57914eb8d8068844560e3a3e545f68d89ca49796dcc0932cdd42ee62064955"
+} %}
+
+{% set version = environ.get('COMMIT_VERSION', None) %}
+{% set version = version or versions.keys()|first %}
+{% set version = version|string %}
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: {{ environ.get('ANACONDA_PACKAGE', "yoda")|string|lower }}
+  version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
 
 source:
-  url: https://yoda.hepforge.org/downloads?f=YODA-{{ version }}.tar.gz
-  sha256: 5c57914eb8d8068844560e3a3e545f68d89ca49796dcc0932cdd42ee62064955
+  url: "https://yoda.hepforge.org/downloads?f=YODA-{{ version }}.tar.gz"
+  {% if versions.get(version, None) %}
+  sha256: {{ versions.get(version) }}
+  {% endif %}
 
 build:
   number: 7
