@@ -35,6 +35,8 @@ requirements:
     - python
     - root
     - cython >=0.24
+    - numpy
+    - matplotlib
     - zlib
   run:
     - python
