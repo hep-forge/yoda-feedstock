@@ -17,8 +17,9 @@ source:
   {% if versions.get(version, None) %}
   sha256: {{ versions.get(version) }}
   {% endif %}
-  patches:
-  - patches/yaml-cstdint.patch
+  #patches:
+  #  - patches/yaml-cstdint.patch
+
 build:
   number: 7
   skip: true  # [win or ppc64le]

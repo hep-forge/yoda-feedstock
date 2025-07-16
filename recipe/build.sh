@@ -20,5 +20,4 @@ export CXXFLAGS="-std=c++17"
 ./configure "${CONFIGURE_ARGS[@]}"
 
 make -j${CPU_COUNT}
-
 make -j${CPU_COUNT} install
