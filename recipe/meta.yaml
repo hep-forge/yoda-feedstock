@@ -34,8 +34,8 @@ requirements:
     
     - gnuconfig  # [unix]
     - pkg-config
-    - make
     - autoconf
+    - make
 
   host:
     - python
