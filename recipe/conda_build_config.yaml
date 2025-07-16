@@ -6,10 +6,12 @@ c_stdlib_version:
   - 2.17  # [linux]
   - 11.0  # [osx]
 
-python:
-  - 3.10.* *_cpython
-  - 3.11.* *_cpython
-  - 3.12.* *_cpython
+root:
+  - 6.32
+  - 6.34
 
+zip_keys:
+  - root
+  
 packages:
   - numpy
