@@ -17,7 +17,7 @@ source:
   {% if versions.get(version, None) %}
   sha256: {{ versions.get(version) }}
   {% endif %}
-  #patches:
+  #patches: # patch required for 2.0.2 (yamlcpp issue)
   #  - patches/yaml-cstdint.patch
 
 build:
