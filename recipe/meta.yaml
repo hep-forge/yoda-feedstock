@@ -40,14 +40,13 @@ requirements:
     - root
     - cython >=0.24
     - numpy
-    - matplotlib
     - zlib
 
   run:
     - python
-    - root
+    - matplotlib-base
     - numpy
-    - matplotlib
+    - root
 
 test:
   imports:
