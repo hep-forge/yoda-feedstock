@@ -37,16 +37,17 @@ requirements:
 
   host:
     - python
-    - root
     - cython >=0.24
-    - numpy
+    - root
     - zlib
+    - hdf5
 
   run:
     - python
     - matplotlib-base
     - numpy
     - root
+    - hdf5
 
 test:
   imports:
