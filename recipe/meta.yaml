@@ -16,21 +16,23 @@ source:
   {% if versions.get(version, None) %}
   sha256: {{ versions.get(version) }}
   {% endif %}
-
+  patches:
+  - patches/yaml-cstdint.patch
 build:
   number: 7
   skip: true  # [win or ppc64le]
 
 requirements:
   build:
+    - python                                 # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
-    - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - gnuconfig  # [unix]
     - pkg-config
     - make
     - autoconf
+
   host:
     - python
     - root
@@ -38,6 +40,7 @@ requirements:
     - numpy
     - matplotlib
     - zlib
+
   run:
     - python
     - root

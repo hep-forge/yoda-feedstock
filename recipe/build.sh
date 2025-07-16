@@ -16,6 +16,7 @@ if [ "$build_platform" != "$target_platform" ]; then
     CONFIGURE_ARGS+=("ac_cv_file_pyext_yoda_core_cpp=no")
 fi
 
+export CXXFLAGS="-std=c++17"
 ./configure "${CONFIGURE_ARGS[@]}"
 
 make -j${CPU_COUNT}
