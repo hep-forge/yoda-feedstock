@@ -8,6 +8,8 @@
 {% set version = version or versions.keys()|first %}
 {% set version = version|string %}
 
+{% set major_version = version.split('.')[0]|int %}
+
 package:
   name: {{ environ.get('ANACONDA_PACKAGE', "yoda")|string|lower }}
   version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
@@ -17,8 +19,10 @@ source:
   {% if versions.get(version, None) %}
   sha256: {{ versions.get(version) }}
   {% endif %}
-  #patches:
-  #  - patches/yaml-cstdint.patch
+  {% if major_version < 2 %}
+  patches:
+    - patches/cstdint.patch
+  {% endif %}
 
 build:
   number: 7
