@@ -15,7 +15,7 @@ index 93ad79e..b33c955 100644
  #endif
  
  #include <string>
-+#include <cstdint>'
++#include <cstdint>
  
  #include "emitterstate.h"
  #include "yaml-cpp/emittermanip.h"
