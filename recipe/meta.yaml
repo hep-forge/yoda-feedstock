@@ -1,7 +1,7 @@
 {% set versions = {
     "2.1.0": "dc0c34fd77eda0bfd67a2a46d17f460b532527743e96853dd1a1f7964c696b6d",
     "2.0.2": "caa1301372ab8d911c8a9e5b2f9dfa31b12fddd39cfb56237499e5705020bede",
-    "1.9.6": "5c57914eb8d8068844560e3a3e545f68d89ca49796dcc0932cdd42ee62064955"
+    "1.9.9": "b95398fac39f46ff73fb507c4739b4248f9689462d5b1c057caf7f3faffc1eb2"
 } %}
 
 {% set version = environ.get('COMMIT_VERSION', None) %}
@@ -26,32 +26,35 @@ source:
 
 build:
   number: 7
+  string: "root{{ root.replace('.', '') }}"
   skip: true  # [win or ppc64le]
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - {{ stdlib('c') }}
+    
     - gnuconfig  # [unix]
     - pkg-config
-    - make
     - autoconf
+    - make
 
   host:
     - python
-    - root
     - cython >=0.24
-    - numpy
-    - matplotlib
+    - root
     - zlib
+    - hdf5
 
   run:
     - python
-    - root
+    - matplotlib-base
     - numpy
-    - matplotlib
+    - root
+    - hdf5
 
 test:
   imports:
