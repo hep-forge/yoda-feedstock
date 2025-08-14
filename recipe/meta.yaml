@@ -9,6 +9,10 @@
 {% set version = version|string %}
 
 {% set major_version = version.split('.')[0]|int %}
+{% set root = root if root else "0" %}
+build:
+  number: 0
+  string: "root{{ root.replace('.', '') }}"
 
 package:
   name: {{ environ.get('ANACONDA_PACKAGE', "yoda")|string|lower }}
