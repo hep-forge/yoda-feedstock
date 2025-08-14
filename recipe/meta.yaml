@@ -49,7 +49,7 @@ requirements:
   host:
     - python
     - cython >=0.24
-    - root
+    - hep-force::root
     - zlib
     - hdf5
 
@@ -57,7 +57,7 @@ requirements:
     - python
     - matplotlib-base
     - numpy
-    - root
+    - hep-force::root
     - hdf5
 
 test:
