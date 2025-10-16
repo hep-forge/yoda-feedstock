@@ -37,9 +37,7 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - {{ compiler('cxx') }}
-    - {{ compiler('c') }}
-    - {{ stdlib('c') }}
+    - root {{ root }}.*
     
     - gnuconfig  # [unix]
     - pkg-config
@@ -49,7 +47,7 @@ requirements:
   host:
     - python
     - cython >=0.24
-    - hep-force::root
+    - root {{ root }}.*
     - zlib
     - hdf5
 
@@ -57,7 +55,7 @@ requirements:
     - python
     - matplotlib-base
     - numpy
-    - hep-force::root
+    - root {{ root }}.*
     - hdf5
 
 test:
