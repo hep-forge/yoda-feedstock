@@ -37,6 +37,7 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - cython >=0.24
     - root {{ root }}.*
     
     - gnuconfig  # [unix]
