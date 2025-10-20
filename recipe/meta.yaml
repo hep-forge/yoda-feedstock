@@ -43,15 +43,12 @@ requirements:
     - make
 
   host:
-    - python
-    - cython >=0.24
     - root {{ root }}.*
     - root-guard
     - zlib
     - hdf5
 
   run:
-    - python
     - matplotlib-base
     - numpy
     - root {{ root }}.*
