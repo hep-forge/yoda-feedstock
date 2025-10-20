@@ -45,6 +45,7 @@ requirements:
   host:
     - root {{ root }}.*
     - root-guard
+    - cython >= 0.24
     - zlib
     - hdf5
 
