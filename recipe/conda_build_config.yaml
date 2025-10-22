@@ -8,7 +8,7 @@ c_stdlib_version:
   
 root:
   - 6.32
-  - 6.34
+#  - 6.34 # yoda <1.9 not compatible with ROOT6.34 due to python >=3.11 conflict.
 
 packages:
   - root
