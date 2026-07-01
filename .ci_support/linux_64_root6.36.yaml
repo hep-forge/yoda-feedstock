@@ -1,0 +1,16 @@
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge main
+docker_image:
+- quay.io/condaforge/linux-anvil-x86_64:alma9
+hdf5:
+- 1.14.6
+root:
+- '6.36'
+target_platform:
+- linux-64
+yoda:
+- '2.1'
+zlib:
+- '1'
