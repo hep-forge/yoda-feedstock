@@ -40,6 +40,7 @@ requirements:
     - root {{ root }}.*
     - root-guard
     - cython >=0.24
+    - setuptools               # configure imports distutils, removed in py3.12
     - gnuconfig  # [unix]
     - pkg-config
     - autoconf
@@ -48,6 +49,7 @@ requirements:
   host:
     - root {{ root }}.*
     - root-guard
+    - setuptools               # configure imports distutils, removed in py3.12
     - zlib
     - hdf5
 
