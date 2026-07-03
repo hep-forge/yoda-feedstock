@@ -12,8 +12,10 @@ build:
   number: 0
   string: "root{{ root.replace('.', '') }}"
 
+{% set name = environ.get('ANACONDA_PACKAGE', "yoda")|string|lower %}
+
 package:
-  name: {{ environ.get('ANACONDA_PACKAGE', "yoda")|string|lower }}
+  name: {{ name }}
   version: {{ environ.get('ANACONDA_VERSION', version)|replace("-", ".") }}
 
 source:
