@@ -103,3 +103,6 @@ about:
 extra:
   recipe-maintainers:
     - meiyasan
+  keep_versions:
+    main:
+      - "1.9.9"   # fastnlo/applgrid pin to this exact pre-2.0 release; the newest-2 auto-trim would otherwise delete it once a 3rd version publishes
