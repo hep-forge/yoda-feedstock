@@ -6,11 +6,20 @@ c_stdlib_version:
   - 2.17  # [linux]
   - 11.0  # [osx]
   
-# 6.36 dropped: 6.36.04 was only ever published for linux-64 (no
-# linux-aarch64 build), so this variant slot was unconditionally
-# unsatisfiable on arm64.
+# This file (and this whole commit) exists only on the "1.9.9" tag,
+# never merged to main: fastnlo/applgrid still need yoda<2 built
+# against root634 specifically (their own conda_build_config.yaml pin),
+# while main's current 2.1.x line targets root638. Building both
+# variants off one shared conda_build_config.yaml would double the
+# matrix for the current line too, for a legacy-only consumer need.
 root:
-  - 6.38
+  - 6.34
+
+# root 6.34 only publishes against python 3.12; without this pin
+# conda-build tries conda-forge's default python matrix (3.9-3.13),
+# and every slot but 3.12 is unsatisfiable under strict channel priority.
+python:
+  - "3.12"
 
 packages:
   - root
