@@ -102,3 +102,10 @@ about:
 extra:
   recipe-maintainers:
     - meiyasan
+  # Long-Term-Supported in *this channel* -- protected from the anaconda
+  # trim's "keep newest 2" rule (see channel-maintenance.yml). 1.9.9 is
+  # the yoda<2 line fastnlo/applgrid/rivet<4/rapgap pin against; without
+  # this it'd fall out of the newest-2 window once a 3rd version exists.
+  lts:
+    main:
+      - "1.9.9"
