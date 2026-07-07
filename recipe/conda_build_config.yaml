@@ -7,15 +7,15 @@ c_stdlib_version:
   - 11.0  # [osx]
   
 # This file (and this whole commit) exists only on the "1.9.9" tag,
-# never merged to main: fastnlo/applgrid still need yoda<2 built
-# against root634 specifically (their own conda_build_config.yaml pin),
-# while main's current 2.1.x line targets root638. Building both
-# variants off one shared conda_build_config.yaml would double the
-# matrix for the current line too, for a legacy-only consumer need.
+# never merged to main: experiment to see whether yoda<2 (1.9.9, an old
+# source tarball) actually compiles against ROOT 6.38's newer toolchain
+# -- untested. If it builds clean, fastnlo/applgrid/apfelgrid/xfitter(-dev)
+# and rivet<4/rapgap can move their whole chains off root634 onto root638.
+# If it fails, move this tag back to root634 -- nothing broken by trying.
 root:
-  - 6.34
+  - 6.38
 
-# root 6.34 only publishes against python 3.12; without this pin
+# root 6.38 only publishes against python 3.12; without this pin
 # conda-build tries conda-forge's default python matrix (3.9-3.13),
 # and every slot but 3.12 is unsatisfiable under strict channel priority.
 python:
