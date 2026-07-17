@@ -32,6 +32,12 @@ build:
   number: 7
   string: "root{{ root.replace('.', '') }}"
   skip: true  # [win or ppc64le]
+  # No ROOT dictionary generation currently, but this links against ROOT
+  # and could grow one -- pre-emptive protection against conda-build's
+  # prefix-relocation corrupting a future lib/*.pcm, matching
+  # root-feedstock/root-plus-feedstock's fix for the identical artifact.
+  ignore_prefix_files:
+    - lib/*.pcm
   run_exports:
     - {{ pin_subpackage(name, max_pin="x.x.x") }}
 
