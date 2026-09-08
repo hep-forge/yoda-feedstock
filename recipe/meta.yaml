@@ -43,6 +43,16 @@ build:
 
 requirements:
   build:
+    # This recipe compiled native code without declaring any compiler, so
+    # conda-build put none in the build environment and the sources were
+    # built by whatever toolchain happened to exist on the CI runner
+    # (ubuntu-24.04's distro gcc against glibc 2.39) rather than a conda
+    # one. That also left c_stdlib/c_stdlib_version inert -- they apply
+    # only through a {{ stdlib('c') }} reference -- so the sysroot 2.17
+    # ABI floor this feedstock appeared to have never reached its binaries.
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - root {{ root }}.*
     - root-guard
     - cython >=0.24
