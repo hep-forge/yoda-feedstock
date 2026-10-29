@@ -18,5 +18,16 @@ fi
 export CXXFLAGS="-fPIC -std=c++17"
 ./configure "${CONFIGURE_ARGS[@]}"
 
+# HDF5 >= 2 reports its extra link libraries as a CMake list
+# ("-lm;-ldl;-laws-c-s3;..."). In the generated Makefiles the shell splits
+# that at each ';' ("-ldl: command not found"), and yoda-config would hand it
+# to users. Turn the separators into spaces where configure stored the values
+# and regenerate every file from them. Every ';' inside these entries is a
+# separator (config.status may wrap the value right after one).
+awk '/^S\["HDF5_[A-Z]*LIBS"\]=/{f=1} f{gsub(/;/," ")} f && !/\\$/{f=0} {print}' \
+    config.status > config.status.fixed
+cat config.status.fixed > config.status && rm config.status.fixed
+./config.status > /dev/null
+
 make -j${CPU_COUNT}
 make -j${CPU_COUNT} install
