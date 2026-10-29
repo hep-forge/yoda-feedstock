@@ -4,8 +4,8 @@ cp $BUILD_PREFIX/share/gnuconfig/config.* .
 
 autoconf
 
-# Make sure the cython sources are recompiled
-rm pyext/yoda/core.cpp pyext/yoda/util.cpp
+# Make sure the cython sources are recompiled (-f: 2.1.4 no longer ships them)
+rm -f pyext/yoda/core.cpp pyext/yoda/util.cpp
 
 declare -a CONFIGURE_ARGS
 CONFIGURE_ARGS+=("--prefix=${PREFIX}")
