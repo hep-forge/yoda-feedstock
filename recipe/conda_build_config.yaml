@@ -8,8 +8,11 @@ c_stdlib_version:
   
 # 6.36 dropped: 6.36.04 was only ever published for linux-64 (no
 # linux-aarch64 build), so this variant slot was unconditionally
-# unsatisfiable on arm64.
+# unsatisfiable on arm64. 6.34 kept for rivet's root634 builds (rivet
+# 3.1.11 needs yoda<2, rivet 4 yoda>=2), which otherwise link against
+# the July GCC 15 yoda root634 files.
 root:
+  - 6.34
   - 6.38
 
 packages:
