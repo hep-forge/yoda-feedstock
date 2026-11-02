@@ -26,10 +26,10 @@ packages:
 # unsolvable against `root`, which pins libstdcxx 15.* and so caps every
 # dependent below 16. A floor, not a ceiling: raise per-package if needed.
 c_compiler_version:         # [linux]
-  - 14
+  - 14                       # [linux]
 cxx_compiler_version:       # [linux]
-  - 14
+  - 14                       # [linux]
 libgcc_version:             # [linux]
-  - 14.*
+  - 14.*                     # [linux]
 libstdcxx_version:          # [linux]
-  - 14.*
+  - 14.*                     # [linux]
