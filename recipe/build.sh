@@ -17,12 +17,12 @@ if [ "$build_platform" != "$target_platform" ]; then
 fi
 export CXXFLAGS="-fPIC -std=c++17"
 if [[ "$(uname)" == "Darwin" ]]; then
-    # configure finds the build env's python (3.14) before the host's, and
-    # its extra libraries "-framework CoreFoundation" are two words that
-    # libtool reorders into "-framework -lz". Name the host python, and
-    # pass the framework as one linker token.
-    CONFIGURE_ARGS+=("PYTHON=${PYTHON}")
-    export PYTHON_EXTRA_LIBS="-ldl -Wl,-framework,CoreFoundation"
+    # Python's extra libraries on macOS are "-ldl -framework CoreFoundation",
+    # and configure adds them to LIBS twice; libtool then drops the second
+    # "CoreFoundation" but keeps its "-framework", which swallows the next
+    # flag ("framework not found -lz"). The extension does not need
+    # CoreFoundation named: -ldl alone.
+    export PYTHON_EXTRA_LIBS="-ldl"
 fi
 ./configure "${CONFIGURE_ARGS[@]}"
 
