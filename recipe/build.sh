@@ -52,3 +52,18 @@ fi
 
 make -j${CPU_COUNT}
 make -j${CPU_COUNT} install
+
+# macOS: the Python modules are linked against libYODA in the build tree
+# (src/.libs/libYODA.dylib) and keep that path, which conda-build does not
+# rewrite (it is outside the prefix). Point them at @rpath instead; they
+# already carry an LC_RPATH to $PREFIX/lib.
+if [[ "$(uname)" == "Darwin" ]]; then
+    for so in $(find "${PREFIX}/lib" -path '*site-packages/yoda/*.so'); do
+        for dep in $(otool -L "$so" | awk 'NR>1 {print $1}' | grep "^${SRC_DIR}" || true); do
+            install_name_tool -change "$dep" "@rpath/$(basename "$dep")" "$so"
+        done
+        if otool -L "$so" | grep -q "^[[:space:]]*${SRC_DIR}"; then
+            echo "yoda: $so still links into the build tree" >&2; exit 1
+        fi
+    done
+fi
