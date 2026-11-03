@@ -34,12 +34,18 @@ awk '/^S\["HDF5_[A-Z]*LIBS"\]=/{f=1} f{gsub(/;/," ")} f && !/\\$/{f=0} {print}' 
     config.status > config.status.fixed
 cat config.status.fixed > config.status && rm config.status.fixed
 if [[ "$(uname)" == "Darwin" ]]; then
-    # HDF5 2.x lists "-framework CoreFoundation" (twice) and "-framework
-    # Security" among its libraries; libtool drops the repeated framework
-    # names but not their "-framework", which then swallows the next flag.
-    # One token each survives.
-    # -i.bak: BSD sed (macOS) would take "-E" for the backup suffix
-    sed -E -i.bak 's/-framework ([A-Za-z_]+)/-Wl,-framework,\1/g' config.status
+    # HDF5 2.x's extra libraries are ;-separated, with "-framework
+    # CoreFoundation" and "-framework Security" among them. ax_lib_hdf5 keeps
+    # only words starting with -l/-L/-I, so each "-framework" survives (glued
+    # to the -l before it) while its framework name is dropped; once the ;
+    # above become spaces it swallows the next flag ("framework not found
+    # -lz"). Drop the orphans: libhdf5 is shared and brings its own
+    # frameworks. A complete "-framework Name" becomes one token.
+    # -i.bak: BSD sed (macOS) takes the next word for the backup suffix.
+    sed -E -i.bak \
+        -e 's/-framework ([A-Za-z_]+)/-Wl,-framework,\1/g' \
+        -e 's/-framework( +-)/\1/g' \
+        -e 's/ -framework( *["\\])/\1/g' config.status
     rm -f config.status.bak
 fi
 ./config.status > /dev/null
