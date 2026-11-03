@@ -38,7 +38,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     # Security" among its libraries; libtool drops the repeated framework
     # names but not their "-framework", which then swallows the next flag.
     # One token each survives.
-    sed -i -E 's/-framework ([A-Za-z_]+)/-Wl,-framework,\1/g' config.status
+    # -i.bak: BSD sed (macOS) would take "-E" for the backup suffix
+    sed -E -i.bak 's/-framework ([A-Za-z_]+)/-Wl,-framework,\1/g' config.status
+    rm -f config.status.bak
 fi
 ./config.status > /dev/null
 
