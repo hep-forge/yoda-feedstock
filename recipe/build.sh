@@ -18,10 +18,8 @@ fi
 export CXXFLAGS="-fPIC -std=c++17"
 if [[ "$(uname)" == "Darwin" ]]; then
     # Python's extra libraries on macOS are "-ldl -framework CoreFoundation",
-    # and configure adds them to LIBS twice; libtool then drops the second
-    # "CoreFoundation" but keeps its "-framework", which swallows the next
-    # flag ("framework not found -lz"). The extension does not need
-    # CoreFoundation named: -ldl alone.
+    # added to LIBS twice: the same libtool problem as HDF5's below. The
+    # extension does not need CoreFoundation named: -ldl alone.
     export PYTHON_EXTRA_LIBS="-ldl"
 fi
 ./configure "${CONFIGURE_ARGS[@]}"
@@ -35,6 +33,13 @@ fi
 awk '/^S\["HDF5_[A-Z]*LIBS"\]=/{f=1} f{gsub(/;/," ")} f && !/\\$/{f=0} {print}' \
     config.status > config.status.fixed
 cat config.status.fixed > config.status && rm config.status.fixed
+if [[ "$(uname)" == "Darwin" ]]; then
+    # HDF5 2.x lists "-framework CoreFoundation" (twice) and "-framework
+    # Security" among its libraries; libtool drops the repeated framework
+    # names but not their "-framework", which then swallows the next flag.
+    # One token each survives.
+    sed -i -E 's/-framework ([A-Za-z_]+)/-Wl,-framework,\1/g' config.status
+fi
 ./config.status > /dev/null
 
 make -j${CPU_COUNT}
