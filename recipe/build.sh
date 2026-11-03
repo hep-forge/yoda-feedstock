@@ -16,6 +16,14 @@ if [ "$build_platform" != "$target_platform" ]; then
     CONFIGURE_ARGS+=("ac_cv_file_pyext_yoda_core_cpp=no")
 fi
 export CXXFLAGS="-fPIC -std=c++17"
+if [[ "$(uname)" == "Darwin" ]]; then
+    # configure finds the build env's python (3.14) before the host's, and
+    # its extra libraries "-framework CoreFoundation" are two words that
+    # libtool reorders into "-framework -lz". Name the host python, and
+    # pass the framework as one linker token.
+    CONFIGURE_ARGS+=("PYTHON=${PYTHON}")
+    export PYTHON_EXTRA_LIBS="-ldl -Wl,-framework,CoreFoundation"
+fi
 ./configure "${CONFIGURE_ARGS[@]}"
 
 # HDF5 >= 2 reports its extra link libraries as a CMake list
