@@ -21,6 +21,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
     # added to LIBS twice: the same libtool problem as HDF5's below. The
     # extension does not need CoreFoundation named: -ldl alone.
     export PYTHON_EXTRA_LIBS="-ldl"
+    # pyext/build.py.in also links libpython by full path (as LHAPDF's does):
+    # a second interpreter in the process, "initialization of core did not
+    # return an extension module". Let the interpreter provide Python.
+    sed -i.bak 's|^pyargs += " " + libpy$|pyargs += " -undefined dynamic_lookup"|' pyext/build.py.in
+    rm -f pyext/build.py.in.bak
+    grep -q 'pyargs += " -undefined dynamic_lookup"' pyext/build.py.in
 fi
 ./configure "${CONFIGURE_ARGS[@]}"
 
