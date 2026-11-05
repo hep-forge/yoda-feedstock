@@ -55,7 +55,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
     - root {{ root }}.*
-    - root-guard  # [linux]
+    - root-guard
     - cython >=0.24
     - setuptools               # configure imports distutils, removed in py3.12
     - gnuconfig  # [unix]
@@ -65,7 +65,7 @@ requirements:
 
   host:
     - root {{ root }}.*
-    - root-guard  # [linux]
+    - root-guard
     - setuptools               # configure imports distutils, removed in py3.12
     - zlib
     - hdf5
@@ -74,7 +74,7 @@ requirements:
     - matplotlib-base
     - numpy
     - root {{ root }}.*
-    - root-guard  # [linux]
+    - root-guard
     - hdf5
 
 test:
