@@ -54,8 +54,8 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ stdlib('c') }}
-    - root {{ root }}.*
-    - root-guard
+    - root_base {{ root }}.* cxx{{ root_cxx_standard }}*
+    - python
     - cython >=0.24
     - setuptools               # configure imports distutils, removed in py3.12
     - gnuconfig  # [unix]
@@ -64,8 +64,8 @@ requirements:
     - make
 
   host:
-    - root {{ root }}.*
-    - root-guard
+    - root_base {{ root }}.* cxx{{ root_cxx_standard }}*
+    - python
     - setuptools               # configure imports distutils, removed in py3.12
     - zlib
     - hdf5
@@ -73,8 +73,7 @@ requirements:
   run:
     - matplotlib-base
     - numpy
-    - root {{ root }}.*
-    - root-guard
+    - {{ pin_compatible('root_base', exact=True) }}
     - hdf5
 
 test:
