@@ -66,6 +66,8 @@ requirements:
   host:
     - root_base {{ root }}.* cxx{{ root_cxx_standard }}*
     - python
+    # configure checks for Cython with the host $PYTHON, not the build one
+    - cython >=0.24
     - setuptools               # configure imports distutils, removed in py3.12
     - zlib
     - hdf5
